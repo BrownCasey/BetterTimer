@@ -10,8 +10,8 @@ namespace BetterTimer
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            // cast MainPage as NavigationPage go navigate pages
+            MainPage = new NavigationPage( new MainPage());
         }
 
         protected override void OnStart()

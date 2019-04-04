@@ -13,5 +13,25 @@ namespace BetterTimer
         {
             InitializeComponent();
         }
+
+        public void OnSend(object sender, EventArgs e)
+        {
+            Message.Text = "Welcome to Better Timer, " + MyName.Text;
+        }
+
+        public void GoTimer(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Timer());
+        }
+
+        public void GoStopwatch(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Stopwatch());
+        }
+
+        private void ClearForm()
+        {
+            MyName.Text = String.Empty;
+        }
     }
 }

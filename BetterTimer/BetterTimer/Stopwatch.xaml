@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BetterTimer.Stopwatch">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="TODO" FontSize="20"/>
+            <Label Text="Stopwatch goes here." FontSize="20"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
