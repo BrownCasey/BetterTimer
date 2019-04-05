@@ -14,7 +14,8 @@
             <Setter Property="BackgroundColor" Value="{StaticResource aqua}"/>
         </Style>
         <Style TargetType="Label">
-            <Setter Property="TextColor"  Value="{StaticResource white}"/>
+            <Setter Property="BackgroundColor"  Value="{StaticResource pink}"/>
+            <Setter Property="TextColor"  Value="{StaticResource black}"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="BackgroundColor"  Value="{StaticResource blue}"/>

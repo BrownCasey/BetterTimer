@@ -4,8 +4,10 @@
              x:Class="BetterTimer.Timer">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="TODO"  FontSize="20"/>
-            <Label Text="Timer goes here."  FontSize="20"/>
+            <Label x:Name="CountdownDisplay" FontSize="60" HorizontalTextAlignment="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start" Clicked="OnStart" HorizontalOptions="Center"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

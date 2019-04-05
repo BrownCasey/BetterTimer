@@ -4,8 +4,15 @@
              x:Class="BetterTimer.Stopwatch">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="TODO" FontSize="20"/>
-            <Label Text="Stopwatch goes here." FontSize="20"/>
+            <Label x:Name="ClockDisplay" FontSize="60" HorizontalTextAlignment="Center" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start" WidthRequest="150" Clicked="OnStart"></Button>
+                <Button Text="Pause" WidthRequest="150" Clicked="OnPause"></Button>
+                <Button Text="Reset" WidthRequest="150" Clicked="OnReset"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="Message" FontSize="20" Text="Some Text" WidthRequest="100"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
