@@ -3,6 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BetterTimer.App">
     <Application.Resources>
-
+        <Color x:Key="blue">#1694CC</Color>
+        <Color x:Key="grey">#5D8799</Color>
+        <Color x:Key="aqua">#36FFCF</Color>
+        <Color x:Key="pink">#FF8475</Color>
+        <Color x:Key="rose">#CC1631</Color>
+        <Color x:Key="black">#CC1631</Color>
+        <Color x:Key="white">#CC1631</Color>
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource aqua}"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor"  Value="{StaticResource white}"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor"  Value="{StaticResource blue}"/>
+            <Setter Property="TextColor"  Value="{StaticResource blue}"/>
+        </Style>
     </Application.Resources>
 </Application>
