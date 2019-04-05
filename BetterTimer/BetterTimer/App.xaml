@@ -8,8 +8,8 @@
         <Color x:Key="aqua">#36FFCF</Color>
         <Color x:Key="pink">#FF8475</Color>
         <Color x:Key="rose">#CC1631</Color>
-        <Color x:Key="black">#CC1631</Color>
-        <Color x:Key="white">#CC1631</Color>
+        <Color x:Key="black">#000000</Color>
+        <Color x:Key="white">#FFFFFF</Color>
         <Style TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="{StaticResource aqua}"/>
         </Style>
