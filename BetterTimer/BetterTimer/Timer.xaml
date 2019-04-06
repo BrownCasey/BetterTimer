@@ -5,8 +5,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="CountdownDisplay" FontSize="60" HorizontalTextAlignment="Center"/>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Start" Clicked="OnStart" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Start" Clicked="OnStart"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

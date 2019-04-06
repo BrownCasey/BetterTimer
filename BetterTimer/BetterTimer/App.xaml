@@ -20,6 +20,7 @@
         <Style TargetType="Button">
             <Setter Property="BackgroundColor"  Value="{StaticResource blue}"/>
             <Setter Property="TextColor"  Value="{StaticResource white}"/>
+            <Setter Property="Margin" Value="10"/>
         </Style>
     </Application.Resources>
 </Application>
