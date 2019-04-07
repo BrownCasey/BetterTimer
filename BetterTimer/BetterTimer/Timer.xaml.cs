@@ -15,9 +15,10 @@ namespace BetterTimer
         public System.Timers.Timer cdTimer = new System.Timers.Timer();
         public TimeSpan countdown;
         public TimeSpan tenthSecond = new TimeSpan(1000000);
+        public TimePicker pickr = new TimePicker();
+
 		public Timer ()
 		{
-            countdown = new TimeSpan(100000000);
             cdTimer.Interval = 100;
             cdTimer.Elapsed += TimerElapsed;
 			InitializeComponent ();
@@ -25,6 +26,7 @@ namespace BetterTimer
 
         private void OnStart(object sender, EventArgs e)
         {
+            countdown = TimePicked.Time;
             cdTimer.Enabled = true;
             cdTimer.Start();
         }
@@ -33,18 +35,18 @@ namespace BetterTimer
         {
             if (countdown < tenthSecond)
             {
-                CountdownDisplay.Text = tenthSecond.ToString(@"hh\:mm\:ss\:ff");
+                CountdownDisplay.Text = tenthSecond.ToString(@"hh\:mm\:ss");
                 cdTimer.Stop();
-                AlertMe("Countdown Ended");
+                // TODO
+                // Make noise
             }
             else
             {
                 countdown -= tenthSecond;
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss\:ff"));
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss"));
             }
         }
 
-        // This alert doesn't appear, closes app.
         async void AlertMe(string s)
         {
             await DisplayAlert("Countdown", s, "OK");

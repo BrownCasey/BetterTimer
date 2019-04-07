@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="CountdownDisplay" FontSize="60" HorizontalTextAlignment="Center"/>
+            <TimePicker x:Name="TimePicked" Time="04:05:06" FontSize="90" HorizontalOptions="Center" Format="HH:mm"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Start" Clicked="OnStart"/>
             </StackLayout>
