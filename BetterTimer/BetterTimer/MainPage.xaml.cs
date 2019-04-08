@@ -29,6 +29,11 @@ namespace BetterTimer
             Navigation.PushAsync(new Stopwatch());
         }
 
+        public void GoMakeNoise(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NoisePage());
+        }
+
         private void ClearForm()
         {
             MyName.Text = String.Empty;
