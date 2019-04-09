@@ -29,9 +29,9 @@ namespace BetterTimer
             Navigation.PushAsync(new Stopwatch());
         }
 
-        public void GoMakeNoise(object sender, EventArgs e)
+        public void GoAlarm(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NoisePage());
+            Navigation.PushAsync(new AlarmPage());
         }
 
         private void ClearForm()
