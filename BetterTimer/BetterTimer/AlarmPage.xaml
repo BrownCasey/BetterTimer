@@ -6,6 +6,11 @@
         <StackLayout>
             <Label Text="TODO"/>
             <Label Text="Alarms go here"/>
+            <StackLayout>
+                <Entry x:Name="Title" Placeholder="Title"/>
+                <DatePicker x:Name="AlarmDate" />
+                <Button Text="Add Alarm"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
