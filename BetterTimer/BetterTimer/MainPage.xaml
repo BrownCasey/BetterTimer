@@ -11,7 +11,7 @@
         <StackLayout Orientation="Horizontal">
             <Button Text="Timer" Clicked="GoTimer" BackgroundColor="Green" TextColor="White"/>
             <Button Text="Stopwatch" Clicked="GoStopwatch" BackgroundColor="Green" TextColor="White"/>
-            <Button Text="Alarm" Clicked="GoAlarmList" BackgroundColor="Green" TextColor="White"/>
+            <Button Text="Alarm" Clicked="GoAlarm" BackgroundColor="Green" TextColor="White"/>
         </StackLayout>
     </StackLayout>
 
