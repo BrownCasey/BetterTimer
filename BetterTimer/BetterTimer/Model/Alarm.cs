@@ -9,6 +9,5 @@ namespace BetterTimer
         public int AlarmId { get; set; }
         public string AlarmTitle { get; set; }
         public DateTime AlarmTime { get; set; }
-        public TimeSpan AlarmDuration { get; set; }
     }
 }

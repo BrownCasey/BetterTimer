@@ -34,11 +34,6 @@ namespace BetterTimer
             Navigation.PushAsync(new AlarmPage());
         }
 
-        public void GoAlarmList(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AlarmList());
-        }
-
         private void ClearForm()
         {
             MyName.Text = String.Empty;

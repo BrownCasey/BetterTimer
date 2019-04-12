@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BetterTimer.AlarmPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="Header" Text="Some Alarms" />
+            <ListView x:Name="AlarmsView" ItemsSource="{Binding AlarmItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Label Text="{Binding AlarmTitle}" />
+                                    <Label Text="{Binding AlarmTime}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Add Alarm" Clicked="AddAlarm" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
