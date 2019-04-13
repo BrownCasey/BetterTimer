@@ -1,4 +1,5 @@
-﻿using BetterTimer.ViewModel;
+﻿using BetterTimer.View;
+using BetterTimer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,30 +15,18 @@ namespace BetterTimer
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AlarmPage : ContentPage
 	{
-        private AlarmPageViewModel vm;
-        public List<Alarm> AlarmItems { get; set; }
-        public AlarmPage ()
+        public AlarmPageViewModel VM { get; set; }
+        public AlarmPage (AlarmPageViewModel vm)
 		{
-            vm = new AlarmPageViewModel();
+            
             BindingContext = vm;
-            AlarmItems = new List<Alarm> {
-                new Alarm
-                {
-                    AlarmTitle = "First",
-                    AlarmTime = new DateTime(2019, 4, 12, 9, 30, 30)
-                },
-                new Alarm
-                {
-                    AlarmTitle = "Second",
-                    AlarmTime = new DateTime(2019, 4, 12, 9, 30, 30)
-                }
-            };
+            VM = vm;
             InitializeComponent();
         }
 
         public void AddAlarm(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new NewAlarm(VM));
         }
 	}
 }

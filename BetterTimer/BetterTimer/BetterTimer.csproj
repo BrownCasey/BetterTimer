@@ -24,19 +24,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AlarmPage.xaml">
+    <EmbeddedResource Update="View\AlarmPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Stopwatch.xaml">
+    <EmbeddedResource Update="View\NewAlarm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Timer.xaml">
+    <EmbeddedResource Update="View\Stopwatch.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
+    <EmbeddedResource Update="View\Timer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

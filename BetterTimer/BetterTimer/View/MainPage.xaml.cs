@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BetterTimer.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,10 @@ namespace BetterTimer
 {
     public partial class MainPage : ContentPage
     {
+        public AlarmPageViewModel VM { get; set; }
         public MainPage()
         {
+            VM = new AlarmPageViewModel();
             InitializeComponent();
         }
 
@@ -31,7 +34,7 @@ namespace BetterTimer
 
         public void GoAlarm(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AlarmPage());
+            Navigation.PushAsync(new AlarmPage(VM));
         }
 
         private void ClearForm()
