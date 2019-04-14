@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BetterTimer
 {
-    interface IDatabaseConnection
+    public interface IDatabaseConnection
     {
         SQLite.SQLiteConnection DbConnection();
     }
