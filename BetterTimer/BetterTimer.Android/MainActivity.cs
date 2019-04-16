@@ -12,6 +12,7 @@ namespace BetterTimer.Droid
     [Activity(Label = "BetterTimer", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        internal static MainActivity Instance { get; set; }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -19,6 +20,7 @@ namespace BetterTimer.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Instance = this;
             LoadApplication(new App());
         }
     }
