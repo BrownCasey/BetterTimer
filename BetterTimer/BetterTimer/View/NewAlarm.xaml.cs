@@ -14,6 +14,7 @@ namespace BetterTimer.View
 	public partial class NewAlarm : ContentPage
 	{
         public AlarmPageViewModel VM { get; set; }
+        public int AlarmManagerId { get; set; }
         public NewAlarm (AlarmPageViewModel vm)
 		{
             VM = vm;
@@ -23,12 +24,15 @@ namespace BetterTimer.View
 
         public void AddAlarm(object sender, EventArgs e)
         {
-            VM.AddAlarm(new Alarm {
+            Alarm newAlarm = new Alarm
+            {
                 AlarmTitle = NewTitle.Text,
                 AlarmTime = new DateTime(
-                    NewDate.Date.Year, NewDate.Date.Month, NewDate.Date.Day, 
+                    NewDate.Date.Year, NewDate.Date.Month, NewDate.Date.Day,
                     NewTime.Time.Hours, NewTime.Time.Minutes, NewTime.Time.Seconds)
-            });
+            };
+            VM.AddAlarm(newAlarm);
+            AlarmManagerId = DependencyService.Get<AlarmMgr>().setAlarm(newAlarm.AlarmTime);
         }
 
         public void GoAlarm(object sender, EventArgs e)

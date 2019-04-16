@@ -28,5 +28,7 @@ namespace BetterTimer
         {
             Navigation.PushAsync(new NewAlarm(VM));
         }
+
+
 	}
 }
