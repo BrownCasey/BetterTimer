@@ -17,7 +17,7 @@ namespace BetterTimer.Droid
     { 
         public override void OnReceive(Context context, Intent intent)
         {
-            throw new NotImplementedException();
+            Toast.MakeText(context, "Time's up!", ToastLength.Long).Show();
         }
     }
 }
