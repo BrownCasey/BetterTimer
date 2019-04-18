@@ -19,7 +19,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Add Alarm" Clicked="AddAlarm" />
+            <StackLayout>
+                <Button Text="Add Alarm" Clicked="AddAlarm" />
+                <Button Text="Clear Alarms" Clicked="ClearAlarms" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

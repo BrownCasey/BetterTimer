@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
@@ -12,7 +13,14 @@ namespace BetterTimer.ViewModel
     {
         private SQLiteConnection database;
         private static object locker = new object();
-        public List<Alarm> AlarmItems { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+        public List<Alarm> AlarmItems { get; set; } 
 
         public AlarmPageViewModel()
         {
@@ -33,6 +41,17 @@ namespace BetterTimer.ViewModel
                 AlarmTitle = "Wake up, Neo...",
                 AlarmTime = new DateTime(2019, 4, 14, 9, 30, 30)
             });
+        }
+
+        internal void ClearAlarms()
+        {
+            lock (locker)
+            {
+                database.DropTable<Alarm>();
+                database.CreateTable<Alarm>();
+            }
+            AlarmItems = null;
+            AlarmItems = new List<Alarm>(database.Table<Alarm>());
         }
 
         public void AddAlarm(Alarm al)

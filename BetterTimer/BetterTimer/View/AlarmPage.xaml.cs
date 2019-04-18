@@ -29,6 +29,10 @@ namespace BetterTimer
             Navigation.PushAsync(new NewAlarm(VM));
         }
 
+        public void ClearAlarms(object sender, EventArgs e)
+        {
+            VM.ClearAlarms();
+        }
 
 	}
 }
