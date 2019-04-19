@@ -26,7 +26,8 @@ namespace BetterTimer.Droid
 
             intent = new Intent(Android.App.Application.Context, typeof(AlarmReceiver));
             pendingIntent = PendingIntent.GetBroadcast(Android.App.Application.Context, 0, intent, 0);
-            manager.Set(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 3000, pendingIntent);
+            //manager.SetExact(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 3000, pendingIntent);
+            manager.SetExact(AlarmType.RtcWakeup, new DateTimeOffset(d).ToUnixTimeMilliseconds(), pendingIntent);
             return d.Date.Minute;
         }
     }

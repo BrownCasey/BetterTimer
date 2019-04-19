@@ -32,6 +32,9 @@ namespace BetterTimer
         public void ClearAlarms(object sender, EventArgs e)
         {
             VM.ClearAlarms();
+
+            // Doesn't reload as I hoped
+            //Navigation.PushAsync(new NewAlarm(VM));
         }
 
 	}

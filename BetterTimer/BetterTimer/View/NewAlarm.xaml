@@ -9,8 +9,8 @@
             <DatePicker x:Name="NewDate" />
             <TimePicker x:Name="NewTime" />
             <StackLayout Orientation="Horizontal">
-                <Button Text="Add it" Clicked="AddAlarm"/>
-                <Button Text="Alarms" Clicked="GoAlarm"/>
+                <Button Text="Submit" Clicked="AddAlarm"/>
+                <Button Text="Cancel" Clicked="GoAlarm"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

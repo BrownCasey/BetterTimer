@@ -33,6 +33,8 @@ namespace BetterTimer.View
             };
             VM.AddAlarm(newAlarm);
             AlarmManagerId = DependencyService.Get<AlarmMgr>().setAlarm(newAlarm.AlarmTime);
+            
+            GoAlarm(sender, e);
         }
 
         public void GoAlarm(object sender, EventArgs e)
