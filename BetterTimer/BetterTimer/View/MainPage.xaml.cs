@@ -16,6 +16,7 @@ namespace BetterTimer
         {
             VM = new AlarmPageViewModel();
             InitializeComponent();
+            OnTimer();
             Device.StartTimer(TimeSpan.FromSeconds(5.0), OnTimer);
         }
 

@@ -5,9 +5,12 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="CountdownDisplay" FontSize="60" HorizontalTextAlignment="Center"/>
-            <TimePicker x:Name="TimePicked" Time="00:01:06" FontSize="90" HorizontalOptions="Center" Format="HH:mm"/>
+            <Slider Maximum="24" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnHourChanged"/>
+            <Slider Maximum="60" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnMinuteChanged"/>
+            <Slider Maximum="60" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnSecondChanged"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Start" Clicked="OnStart"/>
+                <Button Text="Pause" Clicked="OnPause"/>
                 <Button Text="Stop" Clicked="OnStop"/>
             </StackLayout>
         </StackLayout>
