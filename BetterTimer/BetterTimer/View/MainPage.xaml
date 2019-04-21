@@ -4,10 +4,9 @@
              xmlns:local="clr-namespace:BetterTimer"
              x:Class="BetterTimer.MainPage">
 
-    <StackLayout><!-- Remember to update NuGet packages -->
-        <Label x:Name="Message" Text="Welcome to Better Timer." FontSize="20"/>
-        <Entry x:Name="MyName" Placeholder="Your Name" FontSize="20"/>
-        <Button Text="Send" Clicked="OnSend" WidthRequest="100" BackgroundColor="#1694cc" TextColor="White"/>
+    <StackLayout ><!-- Remember to update NuGet packages -->
+        <Label x:Name="ClockTime" Margin="10, 100, 10, 1" FontSize="60"/>
+        <Label x:Name="TodaysDate" Margin="10, 1" FontSize="30"/>
         <StackLayout Orientation="Horizontal">
             <Button Text="Timer" Clicked="GoTimer" BackgroundColor="Green" TextColor="White"/>
             <Button Text="Stopwatch" Clicked="GoStopwatch" BackgroundColor="Green" TextColor="White"/>

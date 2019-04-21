@@ -11,15 +11,12 @@ namespace BetterTimer
     public partial class MainPage : ContentPage
     {
         public AlarmPageViewModel VM { get; set; }
+        public DateTime timeNow { get; set; }
         public MainPage()
         {
             VM = new AlarmPageViewModel();
             InitializeComponent();
-        }
-
-        public void OnSend(object sender, EventArgs e)
-        {
-            Message.Text = "Welcome to Better Timer, " + MyName.Text;
+            Device.StartTimer(TimeSpan.FromSeconds(5.0), OnTimer);
         }
 
         public void GoTimer(object sender, EventArgs e)
@@ -37,9 +34,13 @@ namespace BetterTimer
             Navigation.PushAsync(new AlarmPage(VM));
         }
 
-        private void ClearForm()
+        private bool OnTimer()
         {
-            MyName.Text = String.Empty;
+            timeNow = DateTime.Now;
+            ClockTime.Text = timeNow.ToString(@"HH:mm tt");
+            TodaysDate.Text = timeNow.ToString(@"ddd, MMM dd, yyyy");
+            return true;
         }
+        
     }
 }
