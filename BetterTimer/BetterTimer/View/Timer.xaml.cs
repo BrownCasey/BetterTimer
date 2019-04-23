@@ -21,7 +21,7 @@ namespace BetterTimer
         public int cdSeconds = 0;
         public System.Timers.Timer cdTimer { get; set; }
         public TimeSpan countdown;
-        public TimeSpan tenthSecond = new TimeSpan(1000000);
+        public TimeSpan halfSecond = new TimeSpan(5000000);
         public TimePicker pickr = new TimePicker();
         public ISimpleAudioPlayer player { get; set; }
         public bool play;
@@ -42,20 +42,23 @@ namespace BetterTimer
         {
             countdown = new TimeSpan(cdHours, cdMinutes, cdSeconds);
             cdTimer = new System.Timers.Timer();
-            cdTimer.Interval = 100;
+            play = true;
+            cdTimer.Interval = 500;
             cdTimer.Elapsed += TimerElapsed;
             cdTimer.Enabled = true;
             cdTimer.Start();
-            play = true;
         }
 
         private void TimerElapsed(object sender, EventArgs e)
         {
-            if (countdown < tenthSecond)
+            // Timer is not decrementing consistently. It skips or doubles up.
+            // May be limited to emulator. Seems to be fine on phone.
+            if (countdown <= halfSecond)
             {
-                CountdownDisplay.Text = tenthSecond.ToString(@"hh\:mm\:ss");
+                halfSecond -= halfSecond;
+                CountdownDisplay.Text = halfSecond.ToString(@"hh\:mm\:ss");
                 cdTimer.Stop();
-                // sleep allows this while to be triggered again if user quick hits stop then start
+                // sleep allows this while to be triggered again if user quickly hits stop then start
                 while (play == true)
                 {
                     player.Play();
@@ -65,8 +68,8 @@ namespace BetterTimer
             }
             else
             {
-                countdown -= tenthSecond;
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss"));
+                countdown -= halfSecond;
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss\:ff"));
             }
         }
 
