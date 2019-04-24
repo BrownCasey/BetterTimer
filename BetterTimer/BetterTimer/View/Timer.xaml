@@ -5,9 +5,18 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="CountdownDisplay" FontSize="60" HorizontalTextAlignment="Center"/>
-            <Slider Maximum="24" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnHourChanged"/>
-            <Slider Maximum="60" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnMinuteChanged"/>
-            <Slider Maximum="60" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnSecondChanged"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="HH"/>
+                <Slider Maximum="24" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnHourChanged" WidthRequest="300"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="MM"/>
+                <Slider Maximum="60" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnMinuteChanged" WidthRequest="300"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="SS"/>
+                <Slider Maximum="60" ThumbColor="Red" MaximumTrackColor="Gray" MinimumTrackColor="Gray" ValueChanged="OnSecondChanged" WidthRequest="300"/>
+            </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Start" Clicked="OnStart"/>
                 <Button Text="Pause" Clicked="OnPause"/>

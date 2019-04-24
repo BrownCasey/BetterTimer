@@ -53,9 +53,8 @@ namespace BetterTimer
         {
             // Timer is not decrementing consistently. It skips or doubles up.
             // May be limited to emulator. Seems to be fine on phone.
-            if (countdown <= halfSecond)
+            if (countdown < halfSecond)
             {
-                halfSecond -= halfSecond;
                 CountdownDisplay.Text = halfSecond.ToString(@"hh\:mm\:ss");
                 cdTimer.Stop();
                 // sleep allows this while to be triggered again if user quickly hits stop then start

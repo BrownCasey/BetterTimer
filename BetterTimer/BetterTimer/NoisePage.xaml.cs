@@ -19,7 +19,6 @@ namespace BetterTimer
 
         public void PlaySound(object sender, EventArgs e)
         {
-
             var assembly = typeof(App).GetTypeInfo().Assembly;
             Stream audioStream = assembly.GetManifestResourceStream("BetterTimer.Audio.Alarm09.wav");
             var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
