@@ -51,8 +51,6 @@ namespace BetterTimer
 
         private void TimerElapsed(object sender, EventArgs e)
         {
-            // Timer is not decrementing consistently. It skips or doubles up.
-            // May be limited to emulator. Seems to be fine on phone.
             if (countdown < halfSecond)
             {
                 CountdownDisplay.Text = halfSecond.ToString(@"hh\:mm\:ss");
@@ -68,7 +66,7 @@ namespace BetterTimer
             else
             {
                 countdown -= halfSecond;
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss\:ff"));
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss"));
             }
         }
 
@@ -77,6 +75,7 @@ namespace BetterTimer
             play = false;
             player.Stop();
             cdTimer = null;
+            ResetSlider();
         }
 
         private void OnPause(object sender, EventArgs e)
@@ -107,5 +106,11 @@ namespace BetterTimer
             CountdownDisplay.Text = String.Format(@"{0:D2}:{1:D2}:{2:D2}", cdHours, cdMinutes, cdSeconds);
         }
 
+        private void ResetSlider()
+        {
+            SliderHr.Value = 0;
+            SliderMin.Value = 0;
+            SliderSec.Value = 0;
+        }
     }
 }
