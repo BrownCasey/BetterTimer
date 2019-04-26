@@ -10,12 +10,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.SimpleAudioPlayer;
 using System.Threading;
+using System.Diagnostics;
 
 namespace BetterTimer
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Timer : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Timer : ContentPage
+    {
         public int cdHours = 0;
         public int cdMinutes = 0;
         public int cdSeconds = 0;
@@ -26,9 +27,9 @@ namespace BetterTimer
         public ISimpleAudioPlayer player { get; set; }
         public bool play;
 
-        public Timer ()
-		{
-			InitializeComponent ();
+        public Timer()
+        {
+            InitializeComponent();
             CountdownDisplay.Text = String.Format(@"{0:D2}:{1:D2}:{2:D2}", cdHours, cdMinutes, cdSeconds);
 
             var assembly = typeof(App).GetTypeInfo().Assembly;
@@ -36,7 +37,7 @@ namespace BetterTimer
             player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
             player.Load(audioStream);
 
-		}
+        }
 
         private void OnStart(object sender, EventArgs e)
         {
@@ -49,18 +50,17 @@ namespace BetterTimer
             cdTimer.Start();
         }
 
-        private void TimerElapsed(object sender, EventArgs e)
+        private async void TimerElapsed(object sender, EventArgs e)
         {
             if (countdown < halfSecond)
             {
                 CountdownDisplay.Text = halfSecond.ToString(@"hh\:mm\:ss");
                 cdTimer.Stop();
-                // sleep allows this while to be triggered again if user quickly hits stop then start
+                // how can I handle this to prevent loop on second timer started quickly?
                 while (play == true)
                 {
-                    player.Play();
-                    //TODO Sleep the length of alarm
-                    Thread.Sleep(6000);
+                    int x = await SoAlarming();
+                    Debug.Write("waiting");
                 }
             }
             else
@@ -68,6 +68,15 @@ namespace BetterTimer
                 countdown -= halfSecond;
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss"));
             }
+        }
+
+        async Task<int> SoAlarming()
+        {
+            //player.Play();
+            Debug.Write("alarming");
+            //TODO Sleep the length of alarm
+            await Task.Delay(6000);
+            return 0;
         }
 
         private void OnStop(object sender, EventArgs e)
@@ -80,7 +89,10 @@ namespace BetterTimer
 
         private void OnPause(object sender, EventArgs e)
         {
-            cdTimer.Stop();
+            if (cdTimer != null)
+            {
+                cdTimer.Stop();
+            }
         }
 
         async void AlertMe(string s)
