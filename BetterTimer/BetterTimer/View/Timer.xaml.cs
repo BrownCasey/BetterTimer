@@ -41,26 +41,32 @@ namespace BetterTimer
 
         private void OnStart(object sender, EventArgs e)
         {
-            countdown = new TimeSpan(cdHours, cdMinutes, cdSeconds);
-            cdTimer = new System.Timers.Timer();
-            play = true;
-            cdTimer.Interval = 500;
-            cdTimer.Elapsed += TimerElapsed;
-            cdTimer.Enabled = true;
-            cdTimer.Start();
+            if (cdTimer == null)
+            {
+                countdown = new TimeSpan(cdHours, cdMinutes, cdSeconds);
+                cdTimer = new System.Timers.Timer();
+                play = true;
+                cdTimer.Interval = 500;
+                cdTimer.Elapsed += TimerElapsed;
+                cdTimer.Enabled = true;
+                cdTimer.Start();
+            }
+            else
+                Debug.WriteLine("Timer already started");
         }
 
-        private async void TimerElapsed(object sender, EventArgs e)
+        private void TimerElapsed(object sender, EventArgs e)
         {
             if (countdown < halfSecond)
             {
                 CountdownDisplay.Text = halfSecond.ToString(@"hh\:mm\:ss");
                 cdTimer.Stop();
-                // how can I handle this to prevent loop on second timer started quickly?
                 while (play == true)
                 {
-                    int x = await SoAlarming();
-                    Debug.Write("waiting");
+                    if (!player.IsPlaying)
+                        player.Play();
+                    else
+                        Thread.Sleep(100);
                 }
             }
             else
@@ -69,16 +75,7 @@ namespace BetterTimer
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() => CountdownDisplay.Text = countdown.ToString(@"hh\:mm\:ss"));
             }
         }
-
-        async Task<int> SoAlarming()
-        {
-            //player.Play();
-            Debug.Write("alarming");
-            //TODO Sleep the length of alarm
-            await Task.Delay(6000);
-            return 0;
-        }
-
+        
         private void OnStop(object sender, EventArgs e)
         {
             play = false;
