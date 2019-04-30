@@ -51,6 +51,10 @@ namespace BetterTimer
                 cdTimer.Enabled = true;
                 cdTimer.Start();
             }
+            else if (cdTimer.Enabled == false)
+            {
+                cdTimer.Start();
+            }
             else
                 Debug.WriteLine("Timer already started");
         }
