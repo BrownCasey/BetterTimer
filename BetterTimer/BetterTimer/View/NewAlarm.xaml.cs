@@ -15,10 +15,10 @@ namespace BetterTimer.View
 	{
         public AlarmPageViewModel VM { get; set; }
         public int AlarmManagerId { get; set; }
-        public NewAlarm (AlarmPageViewModel vm)
+        public NewAlarm ()
 		{
-            VM = vm;
-            BindingContext = vm;
+            VM = new AlarmPageViewModel();
+            BindingContext = VM;
 			InitializeComponent ();
 		}
 
@@ -39,7 +39,7 @@ namespace BetterTimer.View
 
         public void GoAlarm(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AlarmPage(VM));
+            Navigation.PushAsync(new AlarmPage());
         }
 	}
 }

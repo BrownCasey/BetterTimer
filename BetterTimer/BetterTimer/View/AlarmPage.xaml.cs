@@ -16,17 +16,18 @@ namespace BetterTimer
 	public partial class AlarmPage : ContentPage
 	{
         public AlarmPageViewModel VM { get; set; }
-        public AlarmPage (AlarmPageViewModel vm)
+        public AlarmPage ()
 		{
             
-            BindingContext = vm;
-            VM = vm;
+            VM = new AlarmPageViewModel();
+            BindingContext = VM;
             InitializeComponent();
         }
 
         public void AddAlarm(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NewAlarm(VM));
+            // probably don't need this VM arg, just get new on NewAlarm
+            Navigation.PushAsync(new NewAlarm());
         }
 
         public void ClearAlarms(object sender, EventArgs e)

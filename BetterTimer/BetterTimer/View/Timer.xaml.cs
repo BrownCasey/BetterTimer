@@ -82,6 +82,7 @@ namespace BetterTimer
         
         private void OnStop(object sender, EventArgs e)
         {
+            // in some stop/start scenario still getting state error
             play = false;
             player.Stop();
             cdTimer = null;

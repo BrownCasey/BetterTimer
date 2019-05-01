@@ -32,7 +32,7 @@ namespace BetterTimer
 
         public void GoAlarm(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AlarmPage(VM));
+            Navigation.PushAsync(new AlarmPage());
         }
 
         private bool OnTimer()
